@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - JavaScript Game</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    /* body { font: 14pt 'Alike', sans-serif; text-align: center;} */
+    #note { font-size: 164px; }
+    .droptarget { background-color: #348781}
+    div.confident { color: black; }
+    div.vague { color: lightgrey; }
+    #note { display: inline-block; height:180px; text-align: left;}
+    
+    #detector { width: 300px; height: 300px; border: 4px solid gray; border-radius: 8px; text-align: center; padding-top: 10px;}
+    #output { width: 300px; height: 42px; }
+    #flat { display: none; }
+    #sharp { display: none; }
+    .flat #flat { display: inline; }
+    .sharp #sharp { display: inline; }
+    /* #pong{
+          border: 2px solid #FFF;
+      } */
+  </style>
+</head>
+<body>
+  <div id="detector" style="display: inline-block; margin-top:45px" class="vague">
+    <div class="pitch"><span id="pitch">--</span>Hz</div>
+    <div class="note"><span id="note">--</span></div>   
+    <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
+  </div>
+<!-- partial:index.partial.html -->
+<div id="world"></div>
+<div id="gameoverInstructions">
+  Game Over
+</div>
+<div id="dist">
+    <div class="label">distance</div>
+    <div id="distValue">000</div>
+</div>
+
+<div id="instructions">Click to jump<span class="lightInstructions"> — Grab the carrots / avoid the hedgehogs</span></div>
+
+
+<div id="credits"> Credits
+  Karim Maloul <a href="https://www.epic.net" target="blank">epic.net</a></p>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r80/three.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src="cs827yin.js"></script>
+<script  src="./script.js"></script>
+<script>
+  window.toggleit();
+</script>
+</body>
+</html>

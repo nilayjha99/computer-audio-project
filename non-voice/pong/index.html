@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- 
+  /* File : index.html
+* Project : Assignment-4: Audio Pong
+* Licence : MIT
+* Author : Nilay Jha
+* Date : Feb - 17 -2020
+* Description : Implementation of ping pong with audio as input using webaudio 
+* Code References: 
+* 1) Piano: https://codepen.io/shimphillip/pen/mZBQvg
+* 2) Making music in the browser: https://www.keithmcmillen.com/blog/making-music-in-the-browser-web-audio-midi-envelope-generator/
+* 3) Creating a basic computer keyboard controlled synthesizer with the Web Audio API: https://medium.com/@mautayro/creating-a-basic-computer-keyboard-controlled-synthesizer-with-the-web-audio-api-8a3d0ab1d65e
+* 4) Ping Pong Game JavaScript Using JavaScript: https://github.com/CodeExplainedRepo/Ping-Pong-Game-JavaScript
+*/
+ -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <style>
+    body { font: 14pt 'Alike', sans-serif; text-align: center;}
+    #note { font-size: 164px; }
+    .droptarget { background-color: #348781}
+    div.confident { color: black; }
+    div.vague { color: lightgrey; }
+    #note { display: inline-block; height:180px; text-align: left;}
+    
+    #detector { width: 300px; height: 300px; border: 4px solid gray; border-radius: 8px; text-align: center; padding-top: 10px;}
+    #output { width: 300px; height: 42px; }
+    #flat { display: none; }
+    #sharp { display: none; }
+    .flat #flat { display: inline; }
+    .sharp #sharp { display: inline; }
+    #pong{
+          border: 2px solid #FFF;
+      }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div style="border: 2px solid black" class="col">
+        <div class="text-center">
+          <h1>Assignment #4: Audio Pong</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div style="border: 2px solid black" class="col">
+        <div class="text-center">
+          <p>
+            <ul style="list-style-type: none;">
+              <li>Say "Oooooooo" to move the paddle up</li>
+              <li>Say "Aunnnnnn" to move the paddle down</li>
+            </ul>
+          </p>
+          <button class="btn btn-dark" style="margin-bottom: 10px;" onclick="startGame()">Start Game</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- left box -->
+      <div class="col" style="border: 2px solid black;">
+        <div id="detector" style="display: inline-block; margin-top:45px" class="vague">
+          <div class="pitch"><span id="pitch">--</span>Hz</div>
+          <div class="note"><span id="note">--</span></div>   
+          <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
+        </div>
+        <pre>Pitch Information</pre>
+      </div>
+      <!-- right box -->
+      <div class="col" style="border: 2px solid black">
+        <canvas id="pong" width="600" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    window.last_note = null;
+    window.last_direction = null;
+  </script>
+  <script src="../../controllers/cs827yin.js"></script>
+  <script src="pong.js"></script>
+  <script>
+    function startGame() {
+      toggleLiveInput()
+      startTheGame()
+    }
+  </script>
+</body>
+
+</html>
